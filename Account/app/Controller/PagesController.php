@@ -67,6 +67,9 @@ class PagesController extends AppController {
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 
+		$this->set('page_title', $title_for_layout);
+		$this->set('page_sub_title', $subpage);
+
 		try {
 			$this->render(implode('/', $path));
 		} catch (MissingViewException $e) {
@@ -75,5 +78,7 @@ class PagesController extends AppController {
 			}
 			throw new NotFoundException();
 		}
+
+		
 	}
 }

@@ -42,16 +42,33 @@
 
 		<?= $this->Html->script('plugins/datatables/jquery.dataTables') ?>
 		<?= $this->Html->script('plugins/datatables/dataTables.bootstrap') ?>
+
+        <style type="text/css">
+            a:link{
+                color:#ff9933;
+            }
+            a.btn-primary:link{
+                color: white;
+            }
+            .container{
+                max-width:970px;
+            }
+            .btn{
+                height: 35px;
+            }
+        </style>
+
     </head>
-    <body class="skin-blue">
+    <body class="skin-black">
+    <!-- <body> -->
         <!-- header logo: style can be found in header.less -->
-        <header class="header">
-            <a href="../../index.html" class="logo">
+        <header class="header" >
+            <a href="../../index.html" class="logo" style="background-color:#ff9933; color:white;">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 Sistema Prendario
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top" role="navigation">
+            <nav class="navbar navbar-static-top" role="navigation" style="background-color:#ff9933; color:white;">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -253,14 +270,14 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Jane Doe <i class="caret"></i></span>
+                                <span> <?= $user['username'] ?> <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
-                                <li class="user-header bg-light-blue">
+                                <li class="user-header bg-orange">
                                     <img src="../../img/avatar3.png" class="img-circle" alt="User Image" />
                                     <p>
-                                        Jane Doe - Web Developer
+                                        <?= $user['username'] ?>  - Web Developer
                                         <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>
@@ -282,7 +299,13 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <!-- <a href="#" class="btn btn-default btn-flat">Sign out</a> -->
+                                        <?= $this->Html->link('Cerrar Session', array(
+                                            'controller'=>'Users',
+                                            'action' => 'logout'
+                                        ), array(
+                                            'class' => 'btn btn-default btn-flat'
+                                        )) ?>
                                     </div>
                                 </li>
                             </ul>
@@ -325,6 +348,9 @@
                             </a>
                         </li>
                         <li>
+                            <?= $this->Html->link(' <i class="fa fa-user"></i> Usuarios', array("controller"=>"Users", "action"=>"index"), array('escape'=>false)) ?>
+                        </li>
+                        <li>
                             <a href="../widgets.html">
                                 <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>
                             </a>
@@ -349,7 +375,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="../UI/general.html"><i class="fa fa-angle-double-right"></i> General</a></li>
-                                <li><a href="../UI/icons.html"><i class="fa fa-angle-double-right"></i> Icons</a></li>
+                                <li><a href="pages/UI/icons.html"><i class="fa fa-angle-double-right"></i> Icons</a></li>
                                 <li><a href="../UI/buttons.html"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
                                 <li><a href="../UI/sliders.html"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
                                 <li><a href="../UI/timeline.html"><i class="fa fa-angle-double-right"></i> Timeline</a></li>
@@ -417,6 +443,7 @@
                         <?= $page_title ?>	
                         <small><?= $page_sub_title ?></small>
                     </h1>
+                    <hr>
                     <!--
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

@@ -28,7 +28,7 @@
             </div><!-- /.headline -->
             
             <!-- User name -->
-            <div class="lockscreen-name">John Doe</div>
+            <div class="lockscreen-name">Bienvenido</div>
             
             <!-- START LOCK SCREEN ITEM -->
             <div class="lockscreen-item">
@@ -42,13 +42,16 @@
                 <!-- lockscreen credentials (contains the form) -->
                 <div class="lockscreen-credentials">   
 
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Username" />
-                        <input type="password" class="form-control" placeholder="password" />
-                        <div class="input-group-btn">
-                            <button class="btn btn-flat"><i class="fa fa-arrow-right text-muted"></i></button>
+                    <form action="" method="post" name="User">
+                        <?php echo $this->session->flash(); ?>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Username" name="User[username]"/>
+                            <input type="password" class="form-control" placeholder="password" name="User[password]" />
+                            <div class="input-group-btn">
+                                <button class="btn btn-flat"><i class="fa fa-arrow-right text-muted"></i></button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div><!-- /.lockscreen credentials -->
 
             </div><!-- /.lockscreen-item -->
