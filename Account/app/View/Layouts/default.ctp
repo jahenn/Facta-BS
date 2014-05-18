@@ -45,7 +45,7 @@
 
         <style type="text/css">
             a:link{
-                color:#ff9933;
+                /* color:#ff9933; */
             }
             a.btn-primary:link{
                 color: white;
@@ -58,6 +58,16 @@
             }
         </style>
 
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".table").dataTable();
+
+                var btnGroup = $(".btn-group");
+                $(".btn-group").remove();
+                $(".tollbar").append($(btnGroup));
+            });
+        </script>
+
     </head>
     <body class="skin-black">
     <!-- <body> -->
@@ -65,7 +75,7 @@
         <header class="header" >
             <a href="../../index.html" class="logo" style="background-color:#ff9933; color:white;">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                Sistema Prendario
+                eFacta MX
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation" style="background-color:#ff9933; color:white;">
@@ -320,7 +330,7 @@
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
-                    <div class="user-panel">
+                    <!-- <div class="user-panel">
                         <div class="pull-left image">
                             <img src="../../img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
@@ -329,26 +339,40 @@
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
+                    <!-- <form action="#" method="get" class="sidebar-form">
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search..."/>
                             <span class="input-group-btn">
                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                             </span>
                         </div>
-                    </form>
+                    </form> -->
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="../../index.html">
+                            <a href="./">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
                         <li>
-                            <?= $this->Html->link(' <i class="fa fa-user"></i> Usuarios', array("controller"=>"Users", "action"=>"index"), array('escape'=>false)) ?>
+                            <?= $this->Html->link('<i class="fa fa-file"></i> Facturas <small class="badge pull-right bg-blue">128</small>', array(
+                                'controller' => 'Invoices', 'action' => 'index'
+                            ), array(
+                                'escape' => false
+                            ) )?>
+                        </li>
+                        <li>
+                            <?= $this->Html->link(' <i class="fa fa-square"></i> Compañias ', array(
+                                    "controller"=>"Companies", "action"=>"index"
+                                ), array('escape'=>false)) ?>
+                        </li>
+                        <li>
+                            <?= $this->Html->link(' <i class="fa fa-user"></i> Usuarios ', array(
+                                    "controller"=>"Users", "action"=>"index"
+                                ), array('escape'=>false)) ?>
                         </li>
                         <li>
                             <a href="../widgets.html">
@@ -439,10 +463,17 @@
             <aside class="right-side">                
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        <?= $page_title ?>	
-                        <small><?= $page_sub_title ?></small>
-                    </h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1>
+                                <?= $page_title ?>  
+                                <small><?= $page_sub_title ?></small>
+                            </h1>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tollbar pull-right"></div>
+                        </div>
+                    </div>
                     <hr>
                     <!--
                     <ol class="breadcrumb">
@@ -455,6 +486,7 @@
 
                 <!-- Main content -->
                 <section class="content">
+                <?= $this->Session->flash() ?>
                  <?php echo $this->fetch('content'); ?>
 
                 </section><!-- /.content -->

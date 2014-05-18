@@ -111,8 +111,8 @@ body.fixed .wrapper {
 }
 /* Content */
 .content {
-  padding: 20px 15px;
-  background: #f9f9f9;
+  padding: 0px 15px;
+  background-color: #f9f9f9;
 }
 /* Utility */
 /* H1 - H6 font */
@@ -413,11 +413,11 @@ body > .header .logo .icon {
   position: relative;
   padding: 15px 15px 10px 20px;
 }
-.right-side > .content-header > h1 {
+h1 {
   margin: 0;
   font-size: 24px;
 }
-.right-side > .content-header > h1 > small {
+h1 > small {
   font-size: 15px;
   display: inline-block;
   padding-left: 4px;

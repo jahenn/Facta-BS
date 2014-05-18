@@ -13,25 +13,27 @@
 </script>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 btn-group">
-			<?= $this->Html->link('<i class="fa fa-plus"></i> Nuevo Usuario', array(
-				'controller'=>'Users',
-				'action'=>'add'
-			), array(
-				'escape' => false,
-				'class'=>'btn btn-primary'
-			)); ?>
+		<div class="col-md-10">
+			<div class="pull-right btn-group">
+				<?= $this->Html->link('<i class="fa fa-plus"></i> Nuevo Usuario', array(
+					'controller'=>'Users',
+					'action'=>'add'
+				), array(
+					'escape' => false,
+					'class'=>'btn btn-primary'
+				)); ?>
+			</div>
 		</div>
 	</div>
 	<br>
 	<div class="row">
-		<div class="col-md-6 well">
+		<div class="col-md-10">
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>Nombre de Usuario</th>
-						<th>Nombre Completo</th>
-						<th>Correo Electronico</th>
+						<th class ="col-md-2">Nombre de Usuario</th>
+						<th class="col-md-6">Nombre Completo</th>
+						<th class="col-md-4">Correo Electronico</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,6 +50,5 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="col-md-6"></div>
 	</div>
 </div>
